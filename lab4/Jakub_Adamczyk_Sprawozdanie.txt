@@ -1,0 +1,16 @@
+﻿Jakub Adamczyk
+
+Zadanie 1:
+Model w simulinku składa się z generatora fali sinusoidalnej, do której podajemy Amplitudę i częstotliwość ze zmiennych w skrypcie. Na wyjściu otrzymujemy sygnał sinusoidalny taki jak wyszedł z generatora, oraz drugi poddany transmitacji w nloku Transfer Fcn.
+
+Analizując wynikowy wykres uzyskany dzieki funkcji plot(simout), podstawiajac różne Amplitudy i Częstotliwosci możemy zauważyć, że amplituda fali, która została poddana transmitacji zależy od zadanej na początku częstotliwości.
+
+Dla Częstotliwości 1 w początkowym piku sinusoidy sygnału poddanego transmitacji amplituda pokrywa sie z amplitudą wejściową, potem amplituda utrzymuje się na minimalnie niższym poziomie rzędu 0.8 * Amplituda wejsciowa. Im niższa częstotliwość od 1 tym aplituda po transmitacji jest mniejsza względem wejściowej. Gdy zwiększamy częstotliwość powyżej 1 amplituda wynikowa także maleje względem wejściowej amplitudy sinusoidy.
+
+Zmiana wartosci Amplitudy zmienia amplitudę wejsciowego sygnału sinusoidalnego.
+
+Poza zmianami amplitudy, można zauważyć minimalne przesunięcie fazowe.
+
+Zadanie 2:
+Dla transmitacji operatorowej 1.20 Układ jest stabilny, ponieważ zgodnie z kryterium Nyquista, wykres nie obejmuje punktu (-1, 0) na płaszczyźnie zespolonej
+Dla transmitacji operatorowej 1.21 Układ jest niestabilny, ponieważ wykres obejmuje punkt (-1, 0) na płaszczyźnie zespolonej
