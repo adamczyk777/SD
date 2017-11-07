@@ -12,6 +12,8 @@ x(1)=1;
 for i=2:20
     x(i)=lambda*x(i-1);
 end
+%tworze nowe okno na wykres
+figure;
 %hold on zeby punkty narysowaly sie na jednym figure
 hold on;
 %ustawiam tytu³a dla naszego wykresu
