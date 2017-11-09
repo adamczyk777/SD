@@ -16,15 +16,19 @@ A=P*J*P^-1;
 hold on;
 %for x=0:pi/30:2*pi
 for x=-25:25
-    %Deklaruj? tutaj wektor WPC warto?ci poczatkowej, który zawiera warto?ci odpowiednio sin(x)
-    %i cos(x) jak napisano w skrypcie
-    % WPC Dla ko?a
+    %Deklaruj? tutaj wektor WPC warto?ci poczatkowej
+    % WPC Dla ko?a [sin(x),cos(x)]
     %WPC=[sin(x);cos(x)];
-    % WPC Dla Kwadratu
+    % WPC Dla Kwadratu ro = max(|sin(x)|,|cos(x)|) WPC
+    % [sin(x)/ro,cos(x)/ro]
     ro=max(abs(sin(x)),abs(cos(x)));
     WPC=[cos(x)/ro, sin(x)/ro];
+    %otwieram plik z modelem
     open 'jakub_adamczyk_model';
+    %przeprowadzam symulacj?
     sim('jakub_adamczyk_model');
+    %rysuj? na podstawie danych symulacji wykres, argumentami sa kolejne
+    %wiersze macierzy o wymiarach 2 x liczbakrokow
     plot(x(:,1), x(:,2));
     
 end;
