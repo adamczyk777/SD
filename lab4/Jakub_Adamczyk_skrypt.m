@@ -3,12 +3,12 @@
 clear;
 
 %zmienna do wyboru zadania:
-choice = input('Podaj numer zadania, które chcesz uruchomiæ: ');
+choice = input('Podaj numer zadania, ktÃ³re chcesz uruchomiÄ‡: ');
 
 if choice == 1
     %Zadanie 1:
     clear;
-    %tutaj ustawiamy amplitude dla jakiej chcemy przeprowadziæ symulacjê
+    %tutaj ustawiamy amplitude dla jakiej chcemy przeprowadziÄ‡ symulacjÄ™
     Amplituda = 1;
     %tutaj ustawiamy czestotliwosc dla jakiej chcemy przeprowadzic sym.
     Czestotliwosc = 5;
@@ -19,9 +19,9 @@ nyquist(    sim('Jakub_Adamczyk_Model1');
     
 elseif choice == 2
     %Zadanie 2:
-    %Sprawdzamy czy uk³ad jest stabilny;
+    %Sprawdzamy czy ukÅ‚ad jest stabilny;
     clear;
-    %Definicja dwóch uk³¹dów otwartych
+    %Definicja dwÃ³ch ukÅ‚Å¡dÃ³w otwartych
     Gs1 = tf([1],[1 1 2]);
     Gs2 = tf([1 0], [1 -0.1 1]);
     
@@ -37,7 +37,7 @@ elseif choice == 3
     
     %Dolnoprzepustowy:
     Gd = tf([1], [4 1]);
-    %Górnoprzepustowy:
+    %GÃ³rnoprzepustowy:
     Gg = tf([0.4 0], [0.4 1]);
     %Pasmoprzepustowy:
     Gp = tf([1 0], [1 2 1]);
@@ -49,6 +49,21 @@ elseif choice == 3
 else
     %Zadanie 4
     clear;
+    
+    %DÅ‚ugoÅ›Ä‡ imienia i nazwiska:
+    I=length('Jakub');
+    N=length('Adamczyk');
+    
+    f_max=sqrt(I+N);
+    f=f_max/64;
+    RC=1/(2*pi*f);
+    DNum=[1];
+    DDen=[RC, 1];
+    DFltr=tf(DNum,DDen);
+    figure;
+    hold on;
+    bode(DFltr, [f_max],'X');
+    bode(DFltr);
     
 end
 
