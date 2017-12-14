@@ -1,16 +1,102 @@
-ï»¿Jakub Adamczyk
+Jakub Adamczyk
 
 Zadanie 1:
-Model w simulinku skÅ‚ada siÄ™ z generatora fali sinusoidalnej, do ktÃ³rej podajemy AmplitudÄ™ i czÄ™stotliwoÅ›Ä‡ ze zmiennych w skrypcie. Na wyjÅ›ciu otrzymujemy sygnaÅ‚ sinusoidalny taki jak wyszedÅ‚ z generatora, oraz drugi poddany transmitacji w nloku Transfer Fcn.
+Model w simulinku sklada sie z generatora fali sinusoidalnej, do ktorej podajemy Amplitude i czestotliwosc
+ze zmiennych w skrypcie. Na wyjsciu otrzymujemy sygnal‚ sinusoidalny taki jak wyszedl‚ z generatora
+, oraz drugi poddany transmitacji w bloku Transfer Fcn.
 
-AnalizujÄ…c wynikowy wykres uzyskany dzieki funkcji plot(simout), podstawiajac rÃ³Å¼ne Amplitudy i CzÄ™stotliwosci moÅ¼emy zauwaÅ¼yÄ‡, Å¼e amplituda fali, ktÃ³ra zostaÅ‚a poddana transmitacji zaleÅ¼y od zadanej na poczÄ…tku czÄ™stotliwoÅ›ci.
+Analizujac wynikowy wykres uzyskany dzieki funkcji plot(simout), podstawiajac rozne Amplitudy 
+i Czestotliwosci mozemy zauwazyc, ze amplituda fali, ktora zostala poddana transmitacji
+zalezy od zadanej na poczatku czestotliwosci.
 
-Dla CzÄ™stotliwoÅ›ci 1 w poczÄ…tkowym piku sinusoidy sygnaÅ‚u poddanego transmitacji amplituda pokrywa sie z amplitudÄ… wejÅ›ciowÄ…, potem amplituda utrzymuje siÄ™ na minimalnie niÅ¼szym poziomie rzÄ™du 0.8 * Amplituda wejsciowa. Im niÅ¼sza czÄ™stotliwoÅ›Ä‡ od 1 tym aplituda po transmitacji jest mniejsza wzglÄ™dem wejÅ›ciowej. Gdy zwiÄ™kszamy czÄ™stotliwoÅ›Ä‡ powyÅ¼ej 1 amplituda wynikowa takÅ¼e maleje wzglÄ™dem wejÅ›ciowej amplitudy sinusoidy.
+Dla Czestotliwosci 1 w poczatkowym piku sinusoidy sygnalu poddanego transmitacji
+amplituda pokrywa sie z amplituda wejsciowa, potem amplituda utrzymuje sie na minimalnie 
+nizszym poziomie rzedu 0.8 * Amplituda wejsciowa. Im nizsza czestotliwosc od 1 
+tym aplituda po transmitacji jest mniejsza wzgledem wejsciowej. Gdy zwiekszamy czestotliwosc powyzej
+1 amplituda wynikowa takze maleje wzgledem wejsciowej amplitudy sinusoidy.
 
-Zmiana wartosci Amplitudy zmienia amplitudÄ™ wejsciowego sygnaÅ‚u sinusoidalnego.
+Zmiana wartosci Amplitudy zmienia amplitude wejsciowego sygnalu sinusoidalnego.
 
-Poza zmianami amplitudy, moÅ¼na zauwaÅ¼yÄ‡ minimalne przesuniÄ™cie fazowe.
+Poza zmianami amplitudy, mozna zauwazyc minimalne przesuniecie fazowe.
 
 Zadanie 2:
-Dla transmitacji operatorowej 1.20 UkÅ‚ad jest stabilny, poniewaÅ¼ zgodnie z kryterium Nyquista, wykres nie obejmuje punktu (-1, 0) na pÅ‚aszczyÅºnie zespolonej
-Dla transmitacji operatorowej 1.21 UkÅ‚ad jest niestabilny, poniewaÅ¼ wykres obejmuje punkt (-1, 0) na pÅ‚aszczyÅºnie zespolonej
+Dla transmitacji operatorowej 1.20 Uklad jest stabilny
+, poniewaz zgodnie z kryterium Nyquista, wykres nie obejmuje punktu (-1, 0) 
+na plaszczyznie zespolonej
+Dla transmitacji operatorowej 1.21 Uklad jest niestabilny
+, poniewaz wykres obejmuje punkt (-1, 0) na plaszczyznie zespolonej
+
+Zadanie 3:
+Figure 1 - a) w konspekcie Figure 2 -b) Figure 3 - c) Figure4 -d) Figure 5 - e)
+
+******* Filtr Dolnoprzepustowy:
+Przepuszcza sygna³y o czêstotliwosci poni¿ej czestotliwosci granicznej.
+Z wykresu bode widzimy, ze tluminie sygnalu rozpoczyna sie w okolicy
+czestotliwosci 10^-1 Hz. ponizej czewstotliwosci 10^-1 Hz aplituda sygnalu sie nie zmienia
+powyzej czestotliwosci 10^-1 Hz sygnal jest powoli coraz bardziej tlumiony.
+Najwieksze przesuniecie fazowe wystêpuje dla najwyzszych czêstotliwosci, siega wartosci -90.
+Model dzialania filtra mozemy zaobserwowac na wykresach sinusoidy o roznych 
+zadanych amplitudach i czestotliwosciach. Mo¿emy te¿ zaobserwowaæ niewielkie przesuniêcie
+fazowe przefiltrowanej sinusoidy wzgledem orginalnej. 
+Dla Figure 2,3,5 Amplituda jest zdecydowanie nizsza niz w sinusoidzie, ktora by³a filtrowana
+w przypadku figure 1 i 4 nie widaæ ju¿ takiej ró¿nicy Amplitudy, pokrywa sie z orginalna.
+
+******* Filtr Gornoprzepustowy:
+Filtr przepuszcza sygnaly powyzej czestotliwosci granicznej
+
+Z wykresu bode widac ze niskie czestotliwosci nie sa tlumione. Ponizej czestotliwosci
+10 Hz przepustowosc sygnalu zaczyna spadac, im mniejsza czestotliwosc tym mniej jest przepuszczane.
+Dla niskich czestotliwosci wystepuje duze przesuniecie fazowe , im wieksza czestotliwosc tym przesuniecie
+fazowe spada. Widac to na drugim wykresie diagramu Bode.
+W przypadku figure 1 i 4 sygnal jest praktycznie zerowy po pewneym krotkim czasie.
+Figure 3 niemal¿e pokrywa siê z orginalnym sygna³em sinusoidalnym, mozemy zauwazyc minimalne przesuniecie fazowe
+ktore maleje ze wzrostem czestotliwsoci
+W Figure 5 Amplituda jest widocznie nizsza, ale nie jest to duzy spadek, takze widzimy przesuniecie fazowe
+W figure 2 Amplituda po tlumieniu jest mniej wiecej polowe nizsza niz orginalna,
+widac dosyc znaczne przesuniecie fazowe wzgledem poczatkowego sygnalu sinusoidalnego.
+
+******* Filtr pasmoprzepustowy:
+Filtr przepuszcza sygnaly ograniczone czestotliwoscia z gory i z dolu podbijajac dane pasmo czestotliwosci
+
+Filtr ten najlepiej przepuszcza dane pasmo, w tym przypadku jest to czestotliwosc 1Hz
+Przesuniecie fazowe o nawet 90 st. wystepuje zarowno przy bardzo nisich czestotliwosciach i bardzo wysokich.
+Najmniejsze przesuniecie fazowe wystepuje dla czestotliwosci ok. 1Hz.
+W przypadku Figure 2 najlepiej widac, to, ze filtr zawsze delikatnie tlumi, ale dla czestotliwosci 1Hz 
+przepuszcza sygnal najbardziej zblizony do sygnalu podstawowego. Przesuniecia fazowego praktycznie nie ma,
+przynajmniej jest jes bardzo trudno zaobserwowac.
+W przypadku Figure 5 widzimy znaczne tlumienie poczatkowego sygnalu jest znaczne, oraz dobrze widoczne.
+Dzieki tlumieniu i bardzo wysokich i bardzo niskich czestotliwosci przefiltrowany sygnal nie jest nadmiernie splaszczony wzgledem
+poczatkowego sygnalu. Mozna zaobserwowac juz wieksze przesuniecie fazowe,
+Dla Figure 1 i 4. Mozna zaobserwowac zaznaczony pik w czasie pierwszych 5 sekund
+Po tym czasie Amplituda zbiega do wartosci 0.
+Dla FIgure 3 Mozemy zauwazyc bardzo silne przesuniecie fazowe, oraz silne tlumienie. Amplituda przefiltrowanego sygnalu
+jest mniej wiecej 20 razy mniejsza od poczatkowej amplitudy.
+
+******* Filtr drugiego rzedu:
+Filtr tlumi czestotliwosci od danej czestotliwosci w gore, oraz wzmacnia dane pasmo czestotliwosci,
+(przynajmniej tak jest w naszym przypadku)
+
+Na diagramie Bodego widzimy , ¿e wysokie czêstotliwoœci sa t³umione, a czêstotliwoœæ 1Hz
+jest podbijana o oko³o 20 decybeli. Przesuniêcie fazowe najszybciej zaczyna rosn¹æ dla
+czêstotliwoœci minimalnie poni¿ej 1Hz.
+Dla FIgure 1 i 4 Mo¿emy zaobserwowaæ dodatkowe pofalowanie sinusoidy,
+W obu przypdakach sytuacja jest podobna, na wykresie sa sinusoidy o duzym okresie,
+pojawia siê coœ w rodzaju kolejnej siusoidy o malej¹cej amplitudzie.
+W przypadku Figure 2 mamy sinusoidê z przesuniêciem fazowym i zmiennej amplitudzie
+W przypadku figure 5 mo¿na zauwa¿yæ pofalowan¹ sinusoidê i mniejszej ni¿ pocz¹tkowa sinusoida amplitudzie.
+Okres tej pofalowanej amplitudy nie zgadza siê z okresem pocz¹tkowej sinusoidy, mo¿na wiêc wywnioskowaæ, ¿e pofalowanie
+powsta³o w skutek ró¿nych wzmocnieñ sygna³u w odpowiednich momentach.
+W przypadku Figure 3 Wukres tak¿e jest zdeformowan¹ sinusoid¹, lecz Amplituda jest drastycznie mniejsza,
+Czestotliwosc w tym przypadku byla ustawiona na wysoka wartosc wiec z tad to tlumienie, z wykresu
+Bodego wiemy, ze najwieksze tlumienie jest gdy czestotliwosc jest wysoka.
+
+
+Zadanie 4:
+Po obliczeniu RC=T wychodzi, wartos 0.44 po podstawieniu sqrt(len(Imie) + len(Nazwisko)) jako czestotliwosc f
+do wzoru 10log(T^2*Omega^2 + 1) = 20, wzor ten pochodzi od samego okreœlenia transmitancji, po kilku przekszta³ceniach go otrzymujemy.
+Spadek w jednej dekadzie wynosi oko³o 20 decybeli, pokazuje siê wykres Bode Diagram, na którym mo¿emy to zauwa¿yæ
+
+
+
+
+

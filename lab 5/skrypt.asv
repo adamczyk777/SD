@@ -33,13 +33,6 @@ switch choice
             title({'eps=0.5'});
             axis([0 tk -3 3]);
         end
-        x0 = 0;
-        [TT,Y] = ode45(@(t, x) handle(t,x, epsilon), [t0,tk], x0);
-        plot(TT, Y, 'c');
-        x0 = 2;
-        [TT,Y] = ode45(@(t, x) handle(t,x, epsilon), [t0,tk], x0);
-        plot(TT, Y, 'c');
-        hold off;
         % jak widac w punkcie x0 = 0 mamy stabilny lokalnie punkt
         % rownowagi, a w punkcie x0 = 2 mamy niestabilny punkt rownowagi,
         % poniewaz w 0 inne trajektorie zbiegaja do tej wartosci, gdzie w
@@ -47,46 +40,17 @@ switch choice
         
         %Przyklad 2:
         
-        handle = @function_handle2;
-        
         figure;
         hold on;
-        for i=-2:0.5:2
-            for j=-2:0.5:2
-                x0=[i,j];
-                plot3(0,i,j,'o');
-                [TT,Y]=ode45(handle,[t0, tk], x0);
-                plot3(TT, Y(:,1), Y(:,2), 'r');
-            end
+        for x0=-4:0.5:4
+            [TT,Y] = ode45(@(t, x) handle(t,x, epsilon), [t0,tk], x0);
+            plot(TT, Y, 'r');
+            ylabel('x(t)');
+            xlabel('Czas t');
+            title({'eps=0.5'});
+            axis([0 tk -3 3]);
         end
-        x0 = [0,0];
-        [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
-        hold off;
-        axis([0 tk -2 2 -2 2]);
-        
-        %Przyk?ad 3:
-        
-        handle = @function_handle3;
-        
-        figure;
-        hold on;
-        for i=-2:0.5:2
-            for j=-2:0.5:2
-                x0=[i,j];
-                plot3(0,i,j,'o');
-                [TT,Y]=ode45(handle,[t0, tk], x0);
-                plot3(TT, Y(:,1), Y(:,2), 'r');
-            end
-        end
-        x0 = [0,0];
-        [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
-        x0 = [-2/3,0];
-        [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
-        hold off;
-        axis([0 tk -2 2 -2 2]);
+        hold off;  
         
     case 2
         clear;
