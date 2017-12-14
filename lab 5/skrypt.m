@@ -191,12 +191,13 @@ switch choice
         t0 = 0;
         tk = 20;
         
+        %Rysowanie wykresu zlinearyzowanego przestrzennego dla punktu 
+        %rownowagi dla ktorego twierdzenie jest spelnione:
         figure;
         hold on;
         for i=-1:0.2:0
             for j=-0.5:0.2:1
              x0=[i,j];
-             plot(i,j,'o');
              [TT,Y]=ode45(handle_orig, [t0, tk], x0);
              plot(Y(:,1),Y(:,2),'r');
 
@@ -204,20 +205,36 @@ switch choice
              plot(Y1(:,1),Y1(:,2),'b');
             end
         end
-        x0=[-2/3,0];
-             plot(-2/3,0,'*k');
-             [TT,Y]=ode45(handle_orig, [t0, tk], x0);
-             plot(Y(:,1),Y(:,2),'c');
+        %kolko w punkcie wokol ktorego trajektorie powinny sie pokrywac
+        plot(0, 0,'*c');
 
         hold off
-        %plot3(TT,Y(:,1),Y(:,2),'r',TT,Y1(:,1),Y1(:,2),'b',TT,Y2(:,1),Y2(:,2),'k',TT,Y3(:,1),Y3(:,2),'c',TT,Y4(:,1),Y4(:,2),'b',TT,Y5(:,1),Y5(:,2),'k',TT,Y6(:,1),Y6(:,2),'c');
         axis([-1 0.5 -0.6 0.8]);
         zlabel('x_1(t)');
         ylabel('x_2(t)');
         xlabel('Czas t');
-        legend('warto?ci pocz?tkowe','system nieliniowy','system liniowy');
 
-        
-        
+        %Rysowanie wykresu zlinearyzowanego przestrzennego dla punktu
+        %rownowagi w ktorym twierdzenie takze jest spelnione
+        figure;
+        hold on;
+        for i=-1:0.2:0
+            for j=-0.5:0.2:1
+             x0=[i,j];
+             [TT,Y]=ode45(handle_orig, [t0, tk], x0);
+             plot(Y(:,1),Y(:,2),'r');
+
+             [TT,Y1]=ode45(handle_23rds, [t0, tk], x0);
+             plot(Y1(:,1)-(2/3),Y1(:,2),'b');
+            end
+        end
+        %punkt wokol ktorego trajektorie powinny sie pokrywac
+        plot(-2/3, 0, '*c');
+
+        hold off
+        axis([-1 0.5 -0.6 0.8]);
+        zlabel('x_1(t)');
+        ylabel('x_2(t)');
+        xlabel('Czas t');
 end
 
