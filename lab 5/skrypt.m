@@ -3,7 +3,7 @@
 clear;
 
 % menu do wyboru danego zadania
-choice = menu('Wybierz zadanie: ', 'Stabilno?? punktów równowagi', 'Wp?yw warto?ci epsilon na rozmiar otoczenia', 'Wp?yw nie spe?nienia za?o?e? twierdzenia 2', 'Dzia?anie twierdzenia 2');
+choice = menu('Wybierz zadanie: ', 'Stabilnosc punktow rownowagi', 'Wplyw wartosci epsilon na rozmiar otoczenia', 'Wplyw braku hiperbolicznosci na podst. prz. 2', 'Dzialanie twierdzenia GH na podst prz. 3');
 
 % Switch z odpowiednimi numerami zadania:
 switch choice
@@ -30,7 +30,7 @@ switch choice
             plot(TT, Y, 'r');
             ylabel('x(t)');
             xlabel('Czas t');
-            title({'eps=0.5'});
+            title({'Wykres w dziedzinie czasu przyk?adu 1 dla wartosci epsilon = 0.5'});
             axis([0 tk -3 3]);
         end
         x0 = 0;
@@ -54,16 +54,19 @@ switch choice
         for i=-2:0.5:2
             for j=-2:0.5:2
                 x0=[i,j];
-                plot3(0,i,j,'o');
                 [TT,Y]=ode45(handle,[t0, tk], x0);
-                plot3(TT, Y(:,1), Y(:,2), 'r');
+                plot(Y(:,1), Y(:,2), 'r');
             end
         end
         x0 = [0,0];
+        plot3(0,x0(1),x0(2),'og');
         [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
+        plot(Y(:,1), Y(:,2), 'c');
         hold off;
-        axis([0 tk -2 2 -2 2]);
+        ylabel('x2(t)');
+        xlabel('x1(t)');
+        title({'Portret fazowy przyklad 2'});
+        axis([-2 2 -2 2]);
         
         %Przyk?ad 3:
         
@@ -74,26 +77,53 @@ switch choice
         for i=-2:0.5:2
             for j=-2:0.5:2
                 x0=[i,j];
-                plot3(0,i,j,'o');
                 [TT,Y]=ode45(handle,[t0, tk], x0);
-                plot3(TT, Y(:,1), Y(:,2), 'r');
+                plot(Y(:,1), Y(:,2), 'r');
             end
         end
         x0 = [0,0];
+        plot3(0,x0(1),x0(2),'og');
         [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
+        plot(Y(:,1), Y(:,2), 'c');
         x0 = [-2/3,0];
         [TT,Y] = ode45(handle, [t0, tk], x0);
-        plot3(TT, Y(:,1), Y(:,2), 'c');
+        plot3(0,x0(1),x0(2),'og');
+        plot(Y(:,1), Y(:,2), 'c');
         hold off;
-        axis([0 tk -2 2 -2 2]);
+        ylabel('x2(t)');
+        xlabel('x1(t)');
+        title({'Portret fazowy przyklad 3'});
+        axis([-2 2 -2 2]);
         
     case 2
         clear;
         %  Na podstawie przyk?adu 1 zanalizowa? wp?yw warto?ci epsilon na rozmiar otoczenia, w którym
         %  dynamiki systemu zlienaryzowanego i nieliniowego s? podobne;
-
+        t0=0;
+        tk=10;
         
+        handle=@function_handle1;
+        
+        fig=0;
+
+        for eps=0.5:0.5:4.5
+            fig=fig+1;
+
+            subplot(3,3,fig)
+            hold on;
+            for x0=-4:0.5:4
+                [TT,Y]=ode45(@(t,x) handle(t, x, eps), [t0, tk], x0);
+                plot(TT,Y,'r');
+                ylabel('x(t)');
+                xlabel('Czas t');
+                title({'eps=';eps});
+                axis([0 tk -3 3]);
+            end
+            x0=1/eps;
+            [TT,Y]=ode45(@(t, x) handle(t, x, eps), [t0, tk], x0);
+            plot(TT,Y,'b');
+            hold off
+        end
         
     case 3
         clear;
