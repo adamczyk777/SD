@@ -104,12 +104,11 @@ switch choice
     case 3
         clear;
         
-        figure;
         title('Zaleznosc pkt. rownowagi od a');
         hold on;
-        line([-5 5], [0 0]);
-        plot(0:0.1:5,sqrt(0:0.1:5), 'r');
-        plot(0:0.1:5,-sqrt(0:0.1:5), 'g');
+        fplot(@(x) x*0, );
+        fplot(@(x) sqrt(x));
+        fplot(@(x) -sqrt(x));
         axis([-5 5 -5 5]);
         xlabel('a');
         ylabel('x');
