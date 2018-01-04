@@ -1,7 +1,7 @@
 %Jakub Adamczyk
 
 %Wybór konkretnego zadania ze sprawozdania:
-choice = menu('Wybierz, zadanie:', 'Zadanie 1 Symulacja Lorenz Van Der Pol', 'Zadanie 2 System Lorenza dla roznych epsilon', 'Zadanie 3 ax-x3', 'Zadanie 4');
+choice = menu('Wybierz, zadanie:', 'Zadanie 1 Symulacja Lorenz Van Der Pol', 'Zadanie 2 System Lorenza dla roznych epsilon', 'Zadanie 3 ax-x3', 'Zadanie 4 Ciekawe przypadki');
 
 switch choice
     %zadanie 1
@@ -118,5 +118,69 @@ switch choice
     %Zadanie 4
     case 4
         clear;
-          
+        % wartosci czasowe
+        t_0 = 0;
+        t_k = 10;
+        t_skok = 1/100;
+        
+        % Ciekawy Przypadek 1
+        ro=-2;
+        b=5;
+        r=20;
+        
+        figure;
+        hold on;
+        X(:,1) = [1;1;20];
+        T(1)=t_0;
+        for j=1:t_k/t_skok + 1
+            X(:,j+1)=X(:,j) + t_skok * feval(@handle_lorenz ,X(:,j), ro, r, b);
+            T(j+1) = t_0 + t_skok * (j);
+        end
+        plot3(X(1,:),X(2,:),X(3,:),'b');
+       
+        %ustawienia wykresu
+        title('Ciekawy Lorenz 1');
+        view([1 -5 3]);
+        hold off;
+        
+        % Ciekawy przypadek 1
+        ro=-10;
+        b=100;
+        r=50;
+        
+        figure;
+        hold on;
+        X(:,1) = [1;1;20];
+        T(1)=t_0;
+        for j=1:t_k/t_skok + 1
+            X(:,j+1)=X(:,j) + t_skok * feval(@handle_lorenz ,X(:,j), ro, r, b);
+            T(j+1) = t_0 + t_skok * (j);
+        end
+        plot3(X(1,:),X(2,:),X(3,:),'b');
+       
+        %ustawienia wykresu
+        title('Ciekawy Lorenz 2');
+        view([1 -5 3]);
+        hold off;
+        
+        % Ciekawy przypadek 3
+        ro=-1;
+        b=0.5;
+        r=50;
+        
+        figure;
+        hold on;
+        X(:,1) = [1;1;20];
+        T(1)=t_0;
+        for j=1:t_k/t_skok + 1
+            X(:,j+1)=X(:,j) + t_skok * feval(@handle_lorenz ,X(:,j), ro, r, b);
+            T(j+1) = t_0 + t_skok * (j);
+        end
+        plot3(X(1,:),X(2,:),X(3,:),'b');
+       
+        %ustawienia wykresu
+        title('Ciekawy Lorenz 3');
+        view([1 -5 3]);
+        hold off;
+        
 end
